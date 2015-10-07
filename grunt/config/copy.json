@@ -1,0 +1,16 @@
+{
+  "index.html": {
+    "src": "src/html/index.html",
+    "dest": "target/index.html"
+  },
+  "view.html": {
+    "expand": true,
+    "cwd": "src/html/view/",
+    "src": "**/*",
+    "dest": "target/view/"
+  },
+  "json": {
+    "src": "src/json/data.json",
+    "dest": "target/json/data.json"
+  }
+}

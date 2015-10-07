@@ -1,0 +1,40 @@
+{
+  "dev": [
+    "build",
+    "connect:sandbox",
+    "watch"
+  ],
+  "build": [
+    "build:html",
+    "build:css",
+    "build:js",
+    "build:json"
+  ],
+  "build:html": [
+    "build:html:index",
+    "build:html:view"
+  ],
+  "build:html:index": [
+    "clean:index.html",
+    "copy:index.html"
+  ],
+  "build:html:view": [
+    "clean:view.html",
+    "copy:view.html"
+  ],
+  "build:css": [
+    "clean:css",
+    "less:application",
+    "cssmin:application"
+  ],
+  "build:js": [
+    "clean:js",
+    "concat:js",
+    "uglify:application",
+    "jshint:js"
+  ],
+  "build:json": [
+    "clean:json",
+    "copy:json"
+  ]
+}

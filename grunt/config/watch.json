@@ -1,0 +1,22 @@
+{
+  "index.html": {
+    "files": ["src/html/index.html"],
+    "tasks": ["build:html:index"]
+  },
+  "view.html": {
+    "files": ["src/html/view/**/*"],
+    "tasks": ["build:html:view"]
+  },
+  "css": {
+    "files": ["src/less/**/*"],
+    "tasks": ["build:css"]
+  },
+  "js": {
+    "files": ["src/js/**/*"],
+    "tasks": ["build:js"]
+  },
+  "json": {
+    "files": ["src/json/**/*"],
+    "tasks": ["build:json"]
+  }
+}
