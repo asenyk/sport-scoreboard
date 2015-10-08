@@ -2,6 +2,7 @@
   "name": "todo",
   "private": true,
   "devDependencies": {
+    "angular": "~1.2.27",
     "bootstrap": "3.3.5"
   }
 }

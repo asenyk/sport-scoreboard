@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="scoreboard">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +10,61 @@
 </head>
 <body>
 
-<h3>Hello world !!!</h3>
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="..." alt="...">
+            <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="..." alt="...">
+            <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="..." alt="...">
+            <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 
+
+
+<div ng-controller="TeamsController as team">
+    <div ng-repeat="team in team.teams">
+        <h3>{{team.name}}</h3>
+        <h3>{{team.from}}</h3>
+        <h3>{{team.id}}</h3>
+    </div>
+</div>
+<hr/>
+<div ng-controller="ChampionshipsController as champ">
+    <div ng-repeat="champ in champ.championships">
+        <h3>{{champ.name}}</h3>
+        <h3>{{champ.from}}</h3>
+        <h3>{{champ.id}}</h3>
+    </div>
+</div>
+
+
+<script src="libraries/angular/angular.min.js"></script>
 <script src="libraries/jquery/dist/jquery.min.js"></script>
 <script src="libraries/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="json/data.json"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
