@@ -3,49 +3,45 @@
 
     var app = angular.module('scoreboard', []);
 
-    app.controller('TeamsController', function () {
-        this.teams = teams;
+    app.controller('TeamsController', function ($http, $sce) {
+        var vm = this;
+        $http.get('http://footballbet.com.ua/api/teams/').
+        success(function(data, status, headers, config) {
+            vm.teamList = data.result;
+        }).
+        error(function(data, status, headers, config) {
+            alert('Error !');
+        });
+        vm.trustAsHtml = function (text) {
+            return $sce.trustAsHtml(text);
+        };
+        //
+        //vm.loadTeam = function () {
+        //    console.log(vm.team);
+        //}
+
     });
 
-    app.controller('ChampionshipsController', function () {
-        this.championships = championships;
+    app.controller('ChampionshipsController', function ($http) {
+        var vm = this;
+        $http.get('http://footballbet.com.ua/api/championships/').
+        success(function(data, status, headers, config) {
+            vm.champList= data.result;
+        }).
+        error(function(data, status, headers, config) {
+            alert('Error !');
+        });
     });
 
-    var teams = [
-        {
-            name: "t_one",
-            from: "t_uk",
-            id: 1
-        },
-        {
-            name: "t_two ",
-            from: "t_us",
-            id: 2
-        },
-        {
-            name: "t_three",
-            from: "t_ua",
-            id: 3
-        }
-    ];
-
-    var championships = [
-        {
-            name: "c_one",
-            from: "c_uk",
-            id: 1
-        },
-        {
-            name: "c_two ",
-            from: "c_us",
-            id: 2
-        },
-        {
-            name: "c_three",
-            from: "c_ua",
-            id: 3
-        }
-    ];
-
+    app.controller('MatchesController', function ($http) {
+        var vm = this;
+        $http.get('http://footballbet.com.ua/api/matches/').
+        success(function(data, status, headers, config) {
+            vm.matches= data.result;
+        }).
+        error(function(data, status, headers, config) {
+            alert('Error !');
+        });
+    });
 
 }());
