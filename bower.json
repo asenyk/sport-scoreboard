@@ -3,6 +3,7 @@
   "private": true,
   "devDependencies": {
     "angular": "~1.2.27",
-    "bootstrap": "3.3.5"
+    "bootstrap": "3.3.5",
+    "lodash": "3.10.1"
   }
 }

@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base href="/" />
+    <base href="/"/>
     <title>~_~</title>
     <link href="libraries/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/application.min.css" rel="stylesheet">
 </head>
 <body>
 
-<div ng-controller="TeamsController as vm">
+<div ng-controller="Football as vm">
 
-    <select ng-model="vm.team" ng-options="team.name for team in vm.teamList" class="form-control">
-        <!--ng-changes="vm.loadTeam()"-->
-    </select>
+    <select ng-model="vm.team" ng-options="team.name for team in vm.teamList" class="form-control"></select>
 
     <div ng-if="vm.team">
         <p>{{vm.team.id_teams}}</p>
         <p>{{vm.team.name}}</p>
         <p>{{vm.team.second_name}}</p>
         <p>{{vm.team.id_championship}}</p>
-        <img ng-src="http://footballbet.com.ua/teams/embl/{{vm.team.emblema}}" />
+        <img ng-src="http://footballbet.com.ua/teams/embl/{{vm.team.emblema}}"/>
         <p>{{vm.team.foundation_year}}</p>
         <p>{{vm.team.president}}</p>
         <p>{{vm.team.coach}}</p>
@@ -31,25 +29,29 @@
         <p>{{vm.team.city}}</p>
         <p ng-bind-html="vm.trustAsHtml(vm.team.title)"></p>
     </div>
-</div>
 
-<div ng-controller="ChampionshipsController as vm">
+    <select ng-model="vm.championship" ng-change="vm.loadTeams()"
+            ng-options="championship.name for championship in vm.champList" class="form-control"></select>
 
-    <select ng-model="vm.championship" ng-options="championship.name for championship in vm.champList" class="form-control"></select>
-
-    <div ng-if="vm.championship">
+    <div ng-if="vm.championship">k
         <p>{{vm.championship.id_championship}}</p>
         <p>{{vm.championship.name}}</p>
         <p>{{vm.championship.sename}}</p>
         <p>{{vm.championship.title}}</p>
-        <img ng-src="http://footballbet.com.ua/table/embl/{{vm.championship.image}}" />
+        <img ng-src="http://footballbet.com.ua/table/embl/{{vm.championship.image}}"/>
         <p>{{vm.championship.num_order}}</p>
+        <br>
+        <div >
+            <p>{{vm.champTeamTable}}</p>
+        </div>
     </div>
+
 </div>
 
 <script src="libraries/angular/angular.min.js"></script>
 <script src="libraries/jquery/dist/jquery.min.js"></script>
 <script src="libraries/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="libraries/lodash/lodash.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
