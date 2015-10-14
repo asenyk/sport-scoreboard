@@ -29,26 +29,19 @@
 
         vm.loadTeams = function () {
             vm.champTeamTable = _.filter(vm.teamList, {'id_championship': vm.championship.id_championship});
-            console.log(vm.championship.id_championship);
-            console.log(vm.champTeamTable);
         };
 
     });
 
-    //
-    //vm.loadTeam = function () {
-    //    console.log(vm.team);
-    //}
-
-    app.controller('MatchesController', function ($http) {
-        var vm = this;
-        $http.get('http://footballbet.com.ua/api/matches/').
-        success(function (data, status, headers, config) {
-            vm.matches = data.result;
-        }).
-        error(function (data, status, headers, config) {
-            alert('Error !');
-        });
-    });
+    //app.controller('MatchesController', function ($http) {
+    //    var vm = this;
+    //    $http.get('http://footballbet.com.ua/api/matches/').
+    //    success(function (data, status, headers, config) {
+    //        vm.matches = data.result;
+    //    }).
+    //    error(function (data, status, headers, config) {
+    //        alert('Error !');
+    //    });
+    //});
 
 }());

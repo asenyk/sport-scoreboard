@@ -13,36 +13,53 @@
 
 <div ng-controller="Football as vm">
 
-    <select ng-model="vm.team" ng-options="team.name for team in vm.teamList" class="form-control"></select>
+    <div class="row">
+        <div class="col-md-6 border">
 
-    <div ng-if="vm.team">
-        <p>{{vm.team.id_teams}}</p>
-        <p>{{vm.team.name}}</p>
-        <p>{{vm.team.second_name}}</p>
-        <p>{{vm.team.id_championship}}</p>
-        <img ng-src="http://footballbet.com.ua/teams/embl/{{vm.team.emblema}}"/>
-        <p>{{vm.team.foundation_year}}</p>
-        <p>{{vm.team.president}}</p>
-        <p>{{vm.team.coach}}</p>
-        <p>{{vm.team.home_stadion}}</p>
-        <a>{{vm.team.off_site}}</a>
-        <p>{{vm.team.city}}</p>
-        <p ng-bind-html="vm.trustAsHtml(vm.team.title)"></p>
-    </div>
+            <select ng-model="vm.team" ng-options="team.name for team in vm.teamList" class="form-control selectWidth">
+                <option value="">-- Виберіть команду --</option>
+            </select>
 
-    <select ng-model="vm.championship" ng-change="vm.loadTeams()"
-            ng-options="championship.name for championship in vm.champList" class="form-control"></select>
+            <div ng-if="vm.team">
+                <h3>{{vm.team.name}}</h3>
+                <img ng-src="http://footballbet.com.ua/teams/embl/{{vm.team.emblema}}"/>
+                <p>Рік заснування:{{vm.team.foundation_year}}</p>
+                <p>Власник команди: {{vm.team.president}}</p>
+                <p>Тренер:{{vm.team.coach}}</p>
+                <p>Домашній стадіон: {{vm.team.home_stadion}}</p>
+                <p>Офіційний сайт: <a>{{vm.team.off_site}}</a></p>
+                <p>Місто: {{vm.team.city}}</p>
+                <h3>Нагороди:</h3>
+                <p ng-bind-html="vm.trustAsHtml(vm.team.title)"></p>
+            </div>
 
-    <div ng-if="vm.championship">k
-        <p>{{vm.championship.id_championship}}</p>
-        <p>{{vm.championship.name}}</p>
-        <p>{{vm.championship.sename}}</p>
-        <p>{{vm.championship.title}}</p>
-        <img ng-src="http://footballbet.com.ua/table/embl/{{vm.championship.image}}"/>
-        <p>{{vm.championship.num_order}}</p>
-        <br>
-        <div >
-            <p>{{vm.champTeamTable}}</p>
+        </div>
+
+        <div class="col-md-6 border">
+
+            <select ng-model="vm.championship" ng-change="vm.loadTeams()"
+                    ng-options="championship.name for championship in vm.champList" class="form-control selectWidth">
+                <option value="">-- Виберіть чемпіонат --</option>
+            </select>
+
+            <div ng-if="vm.championship">
+                <p>{{vm.championship.name}}</p>
+                <img ng-src="http://footballbet.com.ua/table/embl/{{vm.championship.image}}"/>
+                <br>
+                <ul>
+                    <li ng-repeat="team in vm.champTeamTable">
+                        <img ng-src="http://footballbet.com.ua/teams/embl/{{team.emblema}}" class="smallImg"/>
+                        <a ng-click="team.showDetails = !team.showDetails">{{team.name}}</a>
+                        <div ng-show="team.showDetails">
+                            <p>Рік заснування: {{team.foundation_year}}</p>
+                            <p>Власник команди: {{team.president}}</p>
+                            <p>Тренер: {{team.coach}}</p>
+                            <p>Офіційний сайт: <a>{{team.off_site}}</a></p>
+                            <p>Місто: {{team.city}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
